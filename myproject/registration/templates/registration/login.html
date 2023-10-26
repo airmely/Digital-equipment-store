@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST" novalidate>
+    {% csrf_token %}
+    <section class="w-100 px-4 py-5 gradient-custom" style="border-radius: .5rem .5rem 0 0;">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-6">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <div class="mb-md-5 mt-md-4 pb-5">
+
+                            <h2 class="fw-bold mb-2 text-uppercase">Логин</h2>
+                            <p class="text-white-50 mb-5">Пожалуйста, введите логин и пароль!</p>
+                            <div class="form-error">{{ form.non_field_errors }}</div>
+
+                            {{form.as_p}}
+                            <input type="submit" value="Логин"/>
+                            <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Забыли пароль?</a>
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="mb-0">У вас нет учетной записи ?<a href="{% url 'register' %}"
+                                                                      class="text-white-50 fw-bold"> Зарегистрироваться</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+{% endblock content%}

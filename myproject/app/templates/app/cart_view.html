@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if customer_cart_items %}
+{% for product in customer_cart_items %}
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">Товар: {{ product.product.product }}</h5>
+        <p class="card-text">Цена: ${{ product.product.price }}</p>
+        <p class="card-text">Количество: {{ product.quantity }}</p>
+        <form method="post" action="{% url 'delete_from_cart' product.product_id %}">
+            {% csrf_token %}
+            <button class="add-to-cart-button">Удалить из корзины</button>
+        </form>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<h3>Корзина пустая...</h3>
+<p>Чтобы добавить товар в корзину перейдите на главную страницу</p>
+<a href="{% url 'home' %}">Главная страница</a>
+{% endif %}
+
+
+{{ total_price }}
+{% endblock content %}

@@ -1,0 +1,13 @@
+/* Стили для кнопки "Добавить в корзину" */
+.add-to-cart-button {
+    background-color: #007BFF; /* Цвет фона кнопки */
+    color: #fff; /* Цвет текста на кнопке */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px; /* Закругленные углы */
+    cursor: pointer;
+}
+
+.add-to-cart-button:hover {
+    background-color: #0056b3; /* Цвет фона при наведении */
+}

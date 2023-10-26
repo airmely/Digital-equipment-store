@@ -2,5 +2,26 @@
 
 
 {% block content %}
-<p>My application</p>
+{% for prod in product %}
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">Товар: {{ prod.product }}</h5>
+        <p class="card-text">Цена: ${{ prod.price }}</p>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="card-text">Описание: {{ prod.description }}</p>
+                <ul>{{ prod.category }}</ul>
+            </div>
+            <div class="col-md-6">
+                <img src="{{ prod.images.url }}" alt="Изображение продукта">
+                <form method="post" action="{% url 'add_to_cart' prod.id %}">
+                    {% csrf_token %}
+                    <button class="add-to-cart-button">Добавить в корзину</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
 {% endblock content %}
